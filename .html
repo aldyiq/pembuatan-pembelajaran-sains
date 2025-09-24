@@ -1,0 +1,6 @@
+{messages.map((msg, index) => (
+  <div key={index} className={msg.sender}>
+    <p>{msg.text}</p>
+    {msg.image && <img src={msg.image} alt="Related visual" />}
+  </div>
+))}

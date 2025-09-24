@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Education Kalor dan Suhu</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Setting background for the whole page */
+    body {
+  font-family: 'Roboto', sans-serif;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay to improve visibility */
+  height: 100vh; /* Ensure the body takes the full height of the viewport */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-image: url('C:\Users\Windows 11\Documents\ai_joker\ai_chatbox_joker\app.py\image\Image logo background_r0tlgcr0tlgcr0tl.png');
+  background-size: cover; /* Ensure the background image covers the entire area */
+  background-position: center; /* Keep the background image centered */
+  background-attachment: fixed; /* Ensures the background stays in place while scrolling */
+}
+
+.chat-container {
+  background: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px); /* Blur effect to enhance visibility of text */
+  position: relative;
+  z-index: 2; /* Ensure chatbot stays on top of the background */
+}
+
+/* Styling for messages and input box */
+.message-box {
+  max-width: 70%;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.user-message {
+  background-color: #3B82F6;
+  color: white;
+  text-align: right;
+}
+
+.bot-message {
+  background-color: #F1F5F9;
+  color: #333;
+  text-align: left;
+}
+
+/* Input and button styles */
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.input-box {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #D1D5DB;
+  font-size: 14px;
+  outline: none;
+}
+
+.send-btn {
+  background-color: #3B82F6;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.send-btn:hover {
+  background-color: #2563EB;
+}
+
+.feedback-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 5px;
+  font-size: 18px;
+}
+
+.typing-indicator {
+  font-style: italic;
+  color: #6B7280;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .chat-container {
+    max-width: 90%;
+    padding: 15px;
+  }
+  .message-box {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  .chat-container {
+    height: 70%;
+    padding: 10px;
+  }
+  .input-box {
+    font-size: 14px;
+  }
+  .send-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+}
+
+    /* Chatbot container */
+    .chat-container {
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for the chatbot */
+      border-radius: 20px;
+      padding: 20px;
+      max-width: 500px;
+      width: 100%;
+      height: 80%;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px); /* Blur effect to ensure chatbot is legible */
+      position: relative;
+      z-index: 2; /* Ensure chatbot stays on top */
+    }
+
+    /* Style for message boxes */
+    .message-box {
+      max-width: 70%;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    /* User's message style */
+    .user-message {
+      background-color: #3B82F6;
+      color: white;
+      text-align: right;
+    }
+
+    /* Bot's message style */
+    .bot-message {
+      background-color: #F1F5F9;
+      color: #333;
+      text-align: left;
+    }
+
+    /* Input container style */
+    .input-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    /* Input box styling */
+    .input-box {
+      flex: 1;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #D1D5DB;
+      font-size: 14px;
+      outline: none;
+    }
+
+    /* Send button styling */
+    .send-btn {
+      background-color: #3B82F6;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .send-btn:hover {
+      background-color: #2563EB;
+    }
+
+    /* Feedback buttons (like/dislike) */
+    .feedback-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-top: 5px;
+      font-size: 18px;
+    }
+
+    /* Typing indicator styling */
+    .typing-indicator {
+      font-style: italic;
+      color: #6B7280;
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 768px) {
+      .chat-container {
+        max-width: 90%;
+        padding: 15px;
+      }
+      .message-box {
+        padding: 10px;
+        font-size: 14px;
+      }
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 480px) {
+      body {
+        font-size: 14px;
+      }
+      .chat-container {
+        height: 70%;
+        padding: 10px;
+      }
+      .input-box {
+        font-size: 14px;
+      }
+      .send-btn {
+        padding: 10px 18px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="chatbot" class="chat-container">
+    <!-- Chat Messages Section -->
+    <div class="flex-1 overflow-y-auto space-y-4 p-4">
+      <!-- User's message -->
+      <div class="message-box user-message">
+        <p>Ini adalah pesan dari pengguna Education.</p>
+      </div>
+      <!-- Bot's message -->
+      <div class="message-box bot-message">
+        <p>Ini adalah pesan dari education suhu dan kalor dengan beberapa perhitungan detail.</p>
+        <div class="flex space-x-2">
+          <button class="feedback-btn text-green-500">👍</button>
+          <button class="feedback-btn text-red-500">👎</button>
+        </div>
+      </div>
+      <!-- Typing indicator -->
+      <div class="message-box bot-message typing-indicator">
+        <p>Education sedang mengetik...</p>
+      </div>
+    </div>
+
+    <!-- Input Section -->
+    <div class="input-container p-4">
+      <input type="text" class="input-box" placeholder="Tanyakan sesuatu..." />
+      <button class="send-btn">Kirim</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.js"></script>
+  <script>
+    // Add JavaScript code for dynamic chatbot functionalities here.
+  </script>
+</body>
+</html>
